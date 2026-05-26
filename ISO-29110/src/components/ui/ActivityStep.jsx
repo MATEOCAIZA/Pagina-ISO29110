@@ -42,8 +42,9 @@ export default function ActivityStep({ activity, index, total, completed, onTogg
     >
       {/* Connector column */}
       <div className="flex flex-col items-center">
-        <div className={`timeline-dot border-2 ${styles.dot} ${styles.dotText} cursor-pointer`} onClick={() => onToggle && onToggle(activity.id)}>
-          {completed ? <CheckCircle size={20} /> : <span className="text-xs font-bold">{index + 1}</span>}
+        {/* Número del paso - SIEMPRE visible, el check va aparte */}
+        <div className={`timeline-dot border-2 ${styles.dot} ${styles.dotText}`}>
+          <span className="text-xs font-bold">{index + 1}</span>
         </div>
         {!isLast && (
           <div className={`w-0.5 flex-1 min-h-[24px] bg-gradient-to-b ${styles.connector} opacity-30 my-1`} />
@@ -57,12 +58,38 @@ export default function ActivityStep({ activity, index, total, completed, onTogg
             <span className={`badge border text-xs mr-2 ${styles.badge}`}>{activity.code}</span>
             <span className={`badge border text-xs ${styles.badge}`}>{activity.phase}</span>
           </div>
+          
+          {/* Botón de completar - separado y más evidente */}
+          <button
+            onClick={() => onToggle && onToggle(activity.id)}
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              completed 
+                ? 'bg-primary/20 text-primary hover:bg-primary/30' 
+                : 'bg-surface-3 text-text-muted hover:bg-primary/10 hover:text-primary'
+            }`}
+            title={completed ? 'Marcar como no completada' : 'Marcar como completada'}
+          >
+            {completed ? (
+              <>
+                <CheckCircle size={14} />
+                <span>Completada</span>
+              </>
+            ) : (
+              <>
+                <Circle size={14} />
+                <span>No completada</span>
+              </>
+            )}
+          </button>
         </div>
+        
         <h4 className={`font-semibold text-text-primary mb-1 ${completed ? 'line-through text-text-muted' : ''}`}>
           {activity.name}
         </h4>
         <p className="text-text-muted text-sm mb-3">{activity.description}</p>
-
+        
+        <h2 className="text-sm font-semibold text-text-primary mb-2">Actividades:</h2>
+        
         {/* Tasks */}
         <ul className="space-y-1.5 mb-3">
           {activity.tasks.map((task, i) => (
@@ -72,7 +99,9 @@ export default function ActivityStep({ activity, index, total, completed, onTogg
             </li>
           ))}
         </ul>
-
+        
+        <h2 className="text-sm font-semibold text-text-primary mb-2">Artefactos a obtener:</h2>
+        
         {/* Artifacts */}
         <div className="flex flex-wrap gap-1.5">
           {activity.artifacts.map((art, i) => (

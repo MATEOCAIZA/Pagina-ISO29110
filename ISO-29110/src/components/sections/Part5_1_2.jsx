@@ -25,6 +25,16 @@ export default function Part5_1_2({ markVisited }) {
 
   const activities = activeTab === 'pm' ? pmBasicActivities : siBasicActivities;
   const totalActivities = pmBasicActivities.length + siBasicActivities.length;
+  
+  // Progreso específico por pestaña
+  const currentActivities = activeTab === 'pm' ? pmBasicActivities : siBasicActivities;
+  const currentCompletedCount = completedActivities.filter(id => 
+    currentActivities.some(act => act.id === id)
+  ).length;
+  const currentProgress = currentActivities.length > 0 
+    ? Math.round((currentCompletedCount / currentActivities.length) * 100) 
+    : 0;
+  
   const totalProgress = Math.round((completedActivities.length / totalActivities) * 100);
 
   const pmTemplates = artifactTemplates.filter((t) => t.category === 'PM');
@@ -64,7 +74,32 @@ export default function Part5_1_2({ markVisited }) {
           <div className="text-2xl font-bold gradient-text w-14 text-right">{totalProgress}%</div>
         </motion.div>
 
-        {/* Tabs */}
+        {/* Progress for current tab */}
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+          className="bg-surface-2/50 rounded-xl p-3 mb-6 flex items-center justify-between border border-white/5">
+          <div className="flex items-center gap-3">
+            <span className="text-sm font-medium">
+              {activeTab === 'pm' ? '📋 Gestión de Proyectos' : '💻 Implementación de Software'}
+            </span>
+            <span className="text-xs text-text-muted">
+              {currentCompletedCount} de {currentActivities.length} actividades completadas
+            </span>
+          </div>
+          <div className="w-32 h-1.5 bg-surface-3 rounded-full overflow-hidden">
+            <motion.div
+              className="h-full rounded-full"
+              style={{ background: activeTab === 'pm' 
+                ? 'linear-gradient(90deg, hsl(217,91%,60%), hsl(262,83%,65%))'
+                : 'linear-gradient(90deg, hsl(172,66%,50%), hsl(217,91%,60%))'
+              }}
+              animate={{ width: `${currentProgress}%` }}
+              transition={{ duration: 0.3 }}
+            />
+          </div>
+          <span className="text-xs font-mono">{currentProgress}%</span>
+        </motion.div>
+
+        {/* Tabs with activity counts */}
         <div className="flex gap-2 mb-8 p-1 bg-surface-2 rounded-2xl w-fit">
           <button
             onClick={() => setActiveTab('pm')}
@@ -72,6 +107,9 @@ export default function Part5_1_2({ markVisited }) {
             style={activeTab === 'pm' ? { background: 'linear-gradient(135deg, hsl(217,91%,60%), hsl(262,83%,65%))' } : {}}
           >
             🗂️ Gestión de Proyectos (PM)
+            <span className="ml-2 px-1.5 py-0.5 text-[10px] rounded-full bg-white/20">
+              {pmBasicActivities.length}
+            </span>
           </button>
           <button
             onClick={() => setActiveTab('si')}
@@ -79,6 +117,9 @@ export default function Part5_1_2({ markVisited }) {
             style={activeTab === 'si' ? { background: 'linear-gradient(135deg, hsl(172,66%,50%), hsl(217,91%,60%))' } : {}}
           >
             💻 Implementación de Software (SI)
+            <span className="ml-2 px-1.5 py-0.5 text-[10px] rounded-full bg-white/20">
+              {siBasicActivities.length}
+            </span>
           </button>
         </div>
 
@@ -104,7 +145,7 @@ export default function Part5_1_2({ markVisited }) {
           {/* Sidebar: Templates */}
           <div className="space-y-4">
             <h3 className="font-bold text-lg flex items-center gap-2">
-              <FileText size={18} className="text-warning" /> Plantillas de Artefactos
+              <FileText size={18} className="text-warning" /> Componentes de Artefactos
             </h3>
 
             {/* PM Templates */}
@@ -128,9 +169,6 @@ export default function Part5_1_2({ markVisited }) {
                             </li>
                           ))}
                         </ul>
-                        <button className="mt-3 text-xs flex items-center gap-1 text-accent hover:text-accent-light">
-                          <Download size={12} /> Descargar plantilla
-                        </button>
                       </motion.div>
                     )}
                   </button>
@@ -159,9 +197,6 @@ export default function Part5_1_2({ markVisited }) {
                             </li>
                           ))}
                         </ul>
-                        <button className="mt-3 text-xs flex items-center gap-1 text-accent hover:text-accent-light">
-                          <Download size={12} /> Descargar plantilla
-                        </button>
                       </motion.div>
                     )}
                   </button>

@@ -298,5 +298,5 @@ export const artifactTemplates = [
   { id: 'tpl3', name: 'Documento de Diseño (SDD)', category: 'SI', icon: '🏗️', sections: ['Arquitectura del Sistema', 'Diseño de Componentes', 'Diseño de BD', 'Interfaces'] },
   { id: 'tpl4', name: 'Plan de Pruebas', category: 'SI', icon: '🧪', sections: ['Alcance de Pruebas', 'Estrategia', 'Casos de Prueba', 'Criterios de Aceptación'] },
   { id: 'tpl5', name: 'Acta de Cierre', category: 'PM', icon: '✅', sections: ['Entregables Aceptados', 'Métricas Finales', 'Lecciones Aprendidas', 'Firmas'] },
-  { id: 'tpl6', name: 'Registro de Riesgos', category: 'PM', icon: '⚠️', sections: ['ID Riesgo', 'Descripción', 'Probabilidad', 'Impacto', 'Mitigación'] },
+  { id: 'tpl6', name: 'Registro de Riesgos', category: 'PM', icon: '⚠️', sections: ['Identificador de Riesgo', 'Descripción', 'Probabilidad', 'Impacto', 'Mitigación'] },
 ];
