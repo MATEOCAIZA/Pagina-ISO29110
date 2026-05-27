@@ -11,30 +11,38 @@ const colorMap = {
 };
 
 const taxonomy = [
-  { term: 'VSE', def: 'Very Small Entity — Empresa con hasta 25 personas.' },
-  { term: 'Perfil', def: 'Conjunto de procesos y actividades adaptado al tamaño de la VSE.' },
-  { term: 'Proceso', def: 'Conjunto de actividades relacionadas que transforman entradas en salidas.' },
-  { term: 'Artefacto', def: 'Documento o entregable producido como resultado de una actividad.' },
-  { term: 'PM', def: 'Project Management — Gestión de Proyectos.' },
-  { term: 'SI', def: 'Software Implementation — Implementación de Software.' },
+  { term: 'VSE', def: 'Organización pequeña de software (menos de 25 integrantes).' },
+  { term: 'Perfil', def: 'Agrupación de procesos y actividades adaptados al tamaño del equipo.' },
+  { term: 'Proceso', def: 'Secuencia de actividades que transforman entradas en resultados.' },
+  { term: 'Artefacto', def: 'Documento o entregable generado en el desarrollo.' },
+  { term: 'PM', def: 'Project Management — gestión de proyectos.' },
+  { term: 'SI', def: 'Software Implementation — implementación de software.' },
 ];
 
 export default function Part2({ markVisited }) {
-  useEffect(() => { markVisited('part2'); }, []);
+  useEffect(() => { markVisited('part2'); }, [markVisited]);
   const [selectedProfile, setSelectedProfile] = useState(null);
 
   return (
     <section id="part2" className="py-20 bg-surface-2/30">
       <div className="max-w-7xl mx-auto px-4">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
+        {/* Encabezado */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-12"
+        >
           <span className="badge-secondary mb-4">🗂️ ISO 29110 — Parte 2</span>
           <h2 className="section-title mb-3">Marco y Taxonomía</h2>
           <p className="section-subtitle max-w-3xl">
-            La norma define <strong className="text-text-primary">4 perfiles</strong> de capacidad según el tamaño y complejidad de la organización. Identifica cuál aplica a tu empresa.
+            La norma establece <strong className="text-text-primary">perfiles de procesos</strong> que se ajustan
+            al tamaño y complejidad de cada organización. Estos perfiles permiten aplicar la ISO 29110 de manera
+            práctica en equipos pequeños de desarrollo.
           </p>
         </motion.div>
 
-        {/* Profiles */}
+        {/* Perfiles */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
           {profiles.map((p, i) => {
             const c = colorMap[p.color];
@@ -67,8 +75,13 @@ export default function Part2({ markVisited }) {
           })}
         </div>
 
-        {/* Maturity ladder */}
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
+        {/* Escalera de madurez */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-12"
+        >
           <h3 className="text-2xl font-display font-bold mb-6 text-center">Niveles de Madurez</h3>
           <div className="flex flex-col md:flex-row items-center justify-center gap-0">
             {profiles.map((p, i) => {
@@ -90,8 +103,12 @@ export default function Part2({ markVisited }) {
           </div>
         </motion.div>
 
-        {/* Terminology */}
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+        {/* Terminología */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
           <h3 className="text-2xl font-display font-bold mb-4">Terminología Clave</h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {taxonomy.map((t, i) => (

@@ -3,20 +3,20 @@ import { CheckCircle, XCircle, Building2, Users, Target } from 'lucide-react';
 import { useEffect } from 'react';
 
 const withIso = [
-  'Procesos documentados y repetibles',
-  'Entregas a tiempo y dentro del presupuesto',
+  'Procesos claros y documentados',
+  'Entregas puntuales y dentro del presupuesto',
   'Clientes satisfechos y fidelizados',
-  'Equipo con roles y responsabilidades claras',
-  'Gestión profesional de riesgos',
+  'Roles y responsabilidades bien definidos',
+  'Gestión de riesgos profesional',
   'Calidad del software demostrable',
 ];
 
 const withoutIso = [
-  'Proyectos caóticos sin documentación',
+  'Proyectos sin control ni documentación',
   'Retrasos frecuentes y sobrecostos',
   'Quejas y pérdida de clientes',
-  'Confusión de responsabilidades',
-  'Problemas imprevistos que frenan el proyecto',
+  'Confusión en responsabilidades',
+  'Problemas imprevistos que detienen el proyecto',
   'Código difícil de mantener y escalar',
 ];
 
@@ -24,43 +24,58 @@ const benefits = [
   { icon: Target, title: 'Procesos Claros', desc: 'Cada miembro sabe qué hacer, cuándo y cómo.' },
   { icon: Users, title: 'Trabajo en Equipo', desc: 'Roles definidos y comunicación efectiva.' },
   { icon: Building2, title: 'Credibilidad', desc: 'Diferénciate de la competencia con un sello de calidad.' },
-  { icon: CheckCircle, title: 'Mejora Continua', desc: 'Aprende de cada proyecto para hacer el siguiente mejor.' },
+  { icon: CheckCircle, title: 'Mejora Continua', desc: 'Aprende de cada proyecto para mejorar el siguiente.' },
 ];
 
 export default function Part1({ markVisited }) {
-  useEffect(() => { markVisited('part1'); }, []);
+  useEffect(() => { markVisited('part1'); }, [markVisited]);
 
   return (
     <section id="part1" className="py-20 max-w-7xl mx-auto px-4">
-      {/* Header */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
+      {/* Encabezado */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mb-12"
+      >
         <span className="badge-primary mb-4">📌 ISO 29110 — Parte 1</span>
         <h2 className="section-title mb-3">¿Qué es la ISO 29110?</h2>
         <p className="section-subtitle max-w-3xl">
-          Es una norma internacional diseñada <strong className="text-text-primary">exclusivamente</strong> para
-          pequeñas empresas de software (VSEs — Very Small Entities) con hasta 25 personas. No es para grandes corporaciones.
-          Es para empresas <em>como la tuya</em>.
+          La <strong className="text-text-primary">ISO/IEC 29110</strong> es una norma internacional diseñada
+          <strong className="text-text-primary"> exclusivamente </strong> para pequeñas empresas de software
+          (VSEs — Very Small Entities) con hasta 25 personas. Su propósito es ayudar a estas organizaciones
+          a estructurar sus procesos y demostrar calidad en sus proyectos.
         </p>
       </motion.div>
 
-      {/* VSE Definition */}
+      {/* Definición de alcance */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
         className="glass-card p-6 mb-10 border-l-4 border-primary"
       >
         <h3 className="text-xl font-semibold mb-2 flex items-center gap-2">
-          <Building2 className="text-primary" size={22} /> ¿Eres una VSE?
+          <Building2 className="text-primary" size={22} /> Alcance de la norma
         </h3>
         <p className="text-text-muted">
-          Una <strong className="text-text-primary">Very Small Entity (VSE)</strong> es una organización, departamento o proyecto de software
-          con <strong className="text-primary">hasta 25 personas</strong>. Si tu empresa tiene menos de 25 desarrolladores,
-          diseñadores o gestores de proyecto, esta norma está hecha para ti.
+          La ISO 29110 está pensada para organizaciones de desarrollo de software con
+          <strong className="text-primary"> menos de 25 integrantes</strong>. Esto incluye equipos pequeños
+          de desarrolladores, diseñadores y gestores de proyecto. Su objetivo es ofrecer un marco adaptado
+          a la realidad de las empresas que no cuentan con grandes estructuras, pero que necesitan
+          procesos confiables y resultados de calidad.
         </p>
       </motion.div>
 
-      {/* Con vs Sin ISO */}
+      {/* Comparación Con vs Sin ISO */}
       <div className="grid md:grid-cols-2 gap-6 mb-12">
-        <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="glass-card p-6">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="glass-card p-6"
+        >
           <h3 className="font-semibold text-accent mb-4 flex items-center gap-2">
             <CheckCircle size={18} /> Con ISO 29110
           </h3>
@@ -73,7 +88,12 @@ export default function Part1({ markVisited }) {
             ))}
           </ul>
         </motion.div>
-        <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="glass-card p-6">
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="glass-card p-6"
+        >
           <h3 className="font-semibold text-danger mb-4 flex items-center gap-2">
             <XCircle size={18} /> Sin ISO 29110
           </h3>
@@ -88,15 +108,27 @@ export default function Part1({ markVisited }) {
         </motion.div>
       </div>
 
-      {/* Benefits */}
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+      {/* Beneficios */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
         <h3 className="text-2xl font-display font-bold mb-6">Beneficios clave para tu empresa</h3>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {benefits.map((b, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-              className="glass-card p-5 text-center hover:border-primary/30 transition-all group">
-              <div className="w-12 h-12 rounded-xl mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform"
-                style={{ background: 'linear-gradient(135deg, hsla(217,91%,60%,0.2), hsla(262,83%,65%,0.2))' }}>
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="glass-card p-5 text-center hover:border-primary/30 transition-all group"
+            >
+              <div
+                className="w-12 h-12 rounded-xl mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform"
+                style={{ background: 'linear-gradient(135deg, hsla(217,91%,60%,0.2), hsla(262,83%,65%,0.2))' }}
+              >
                 <b.icon size={22} className="text-primary" />
               </div>
               <h4 className="font-semibold mb-1">{b.title}</h4>
