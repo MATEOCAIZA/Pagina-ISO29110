@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { CheckCircle, XCircle, Building2, Users, Target } from 'lucide-react';
+import { CheckCircle, XCircle, Building2, Users, Target, Clock } from 'lucide-react';
 import { useEffect } from 'react';
 
 const withIso = [
@@ -27,6 +27,13 @@ const benefits = [
   { icon: CheckCircle, title: 'Mejora Continua', desc: 'Aprende de cada proyecto para mejorar el siguiente.' },
 ];
 
+const timeline = [
+  { step: 'Diagnóstico', desc: 'Identificar el estado actual de procesos.' },
+  { step: 'Documentación', desc: 'Formalizar roles, entregables y riesgos.' },
+  { step: 'Aplicación', desc: 'Implementar prácticas y controles definidos.' },
+  { step: 'Mejora Continua', desc: 'Evaluar y optimizar tras cada proyecto.' },
+];
+
 export default function Part1({ markVisited }) {
   useEffect(() => { markVisited('part1'); }, [markVisited]);
 
@@ -37,23 +44,42 @@ export default function Part1({ markVisited }) {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-12"
+        className="mb-16 text-center relative"
       >
-        <span className="badge-primary mb-4">📌 ISO 29110 — Parte 1</span>
-        <h2 className="section-title mb-3">¿Qué es la ISO 29110?</h2>
-        <p className="section-subtitle max-w-3xl">
-          La <strong className="text-text-primary">ISO/IEC 29110</strong> es una norma internacional diseñada
-          <strong className="text-text-primary"> exclusivamente </strong> para pequeñas empresas de software
-          (VSEs — Very Small Entities) con hasta 25 personas. Su propósito es ayudar a estas organizaciones
-          a estructurar sus procesos y demostrar calidad en sus proyectos.
-        </p>
+        {/* Badge superior */}
+        <span className="badge-primary mb-4 inline-block px-4 py-1 rounded-full shadow-sm">
+          📌 ISO 29110 — Parte 1
+        </span>
+
+        {/* Título elegante */}
+        <h2 className="section-title mb-4 text-3xl font-display font-bold tracking-wide text-primary">
+          ¿Qué es la ISO 29110?
+        </h2>
+
+        {/* Bloque narrativo con fondo sutil */}
+        <div className="glass-card p-6 max-w-3xl mx-auto shadow-lg border border-primary/20 rounded-xl">
+          <p className="section-subtitle leading-relaxed text-lg text-text-muted">
+            La <strong className="text-text-primary">ISO/IEC 29110</strong> no es solo un estándar técnico,
+            sino una guía internacional diseñada <strong className="text-text-primary">exclusivamente</strong>
+            para pequeñas empresas de software (VSEs — Very Small Entities) con hasta 25 personas.
+            Su propósito es ofrecer un marco claro y confiable que permita a estas organizaciones
+            estructurar sus procesos, demostrar calidad y proyectar credibilidad en un mercado competitivo.
+          </p>
+        </div>
+
+        {/* Línea decorativa */}
+        <div className="mt-6 flex justify-center">
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent rounded-full"></div>
+        </div>
       </motion.div>
+
 
       {/* Definición de alcance */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
+        transition={{ duration: 0.4 }}
         className="glass-card p-6 mb-10 border-l-4 border-primary"
       >
         <h3 className="text-xl font-semibold mb-2 flex items-center gap-2">
@@ -119,8 +145,8 @@ export default function Part1({ markVisited }) {
           {benefits.map((b, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               className="glass-card p-5 text-center hover:border-primary/30 transition-all group"
@@ -136,6 +162,83 @@ export default function Part1({ markVisited }) {
             </motion.div>
           ))}
         </div>
+      </motion.div>
+
+      {/* Línea de tiempo enriquecida ISO 29110 */}
+      <motion.div
+        className="glass-card p-10 mt-12 border-t-4 border-primary"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+      >
+        <h3 className="text-2xl font-display font-bold text-center mb-10">
+          Camino de Adopción de la ISO 29110
+        </h3>
+
+        <div className="relative flex flex-col md:flex-row md:justify-between md:items-start gap-8">
+          {/* Paso 1 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="glass-card p-6 w-full md:w-1/4 text-center"
+          >
+            <CheckCircle className="text-primary mx-auto mb-3" size={28} />
+            <h4 className="font-semibold mb-2">Diagnóstico</h4>
+            <p className="text-sm text-text-muted">
+              Evaluar la situación actual de la empresa, identificar debilidades y fortalezas.
+            </p>
+          </motion.div>
+
+          {/* Paso 2 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="glass-card p-6 w-full md:w-1/4 text-center"
+          >
+            <Building2 className="text-accent mx-auto mb-3" size={28} />
+            <h4 className="font-semibold mb-2">Documentación</h4>
+            <p className="text-sm text-text-muted">
+              Definir roles, responsabilidades y procesos claros para cada proyecto.
+            </p>
+          </motion.div>
+
+          {/* Paso 3 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="glass-card p-6 w-full md:w-1/4 text-center"
+          >
+            <Users className="text-success mx-auto mb-3" size={28} />
+            <h4 className="font-semibold mb-2">Aplicación</h4>
+            <p className="text-sm text-text-muted">
+              Implementar las prácticas definidas y asegurar la comunicación efectiva del equipo.
+            </p>
+          </motion.div>
+
+          {/* Paso 4 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="glass-card p-6 w-full md:w-1/4 text-center"
+          >
+            <Target className="text-danger mx-auto mb-3" size={28} />
+            <h4 className="font-semibold mb-2">Mejora Continua</h4>
+            <p className="text-sm text-text-muted">
+              Evaluar resultados, optimizar procesos y aprender de cada proyecto.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Texto elegante de cierre */}
+        <p className="text-lg text-text-muted max-w-4xl mx-auto leading-relaxed mt-12 text-center">
+          La adopción de la ISO 29110 es un viaje progresivo: comienza con el diagnóstico,
+          se fortalece con la documentación, se consolida en la aplicación y se perfecciona
+          con la mejora continua. Este camino asegura que incluso las organizaciones más
+          pequeñas puedan crecer con orden, calidad y visión de futuro.
+        </p>
       </motion.div>
     </section>
   );

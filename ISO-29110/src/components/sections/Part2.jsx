@@ -26,21 +26,38 @@ export default function Part2({ markVisited }) {
   return (
     <section id="part2" className="py-20 bg-surface-2/30">
       <div className="max-w-7xl mx-auto px-4">
-        {/* Encabezado */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-12"
-        >
-          <span className="badge-secondary mb-4">🗂️ ISO 29110 — Parte 2</span>
-          <h2 className="section-title mb-3">Marco y Taxonomía</h2>
-          <p className="section-subtitle max-w-3xl">
-            La norma establece <strong className="text-text-primary">perfiles de procesos</strong> que se ajustan
-            al tamaño y complejidad de cada organización. Estos perfiles permiten aplicar la ISO 29110 de manera
-            práctica en equipos pequeños de desarrollo.
-          </p>
-        </motion.div>
+
+    {/* Encabezado */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="mb-16 text-center relative"
+    >
+      {/* Badge superior */}
+      <span className="badge-secondary mb-4 inline-block px-4 py-1 rounded-full shadow-sm">
+        🗂️ ISO 29110 — Parte 2
+      </span>
+
+      {/* Título elegante */}
+      <h2 className="section-title mb-4 text-3xl font-display font-bold tracking-wide text-accent">
+        Marco y Taxonomía
+      </h2>
+
+      {/* Bloque narrativo con fondo sutil */}
+      <div className="glass-card p-6 max-w-3xl mx-auto shadow-lg border border-accent/20 rounded-xl">
+        <p className="section-subtitle leading-relaxed text-lg text-text-muted">
+          La norma establece perfiles de procesos que se ajustan al tamaño y complejidad de cada organización. Estos perfiles permiten 
+          aplicar la ISO 29110 de manera práctica en equipos pequeños de desarrollo, asegurando 
+          que cada proyecto tenga un marco claro, adaptable y orientado a la calidad.
+        </p>
+      </div>
+
+  
+      <div className="mt-6 flex justify-center">
+        <div className="w-24 h-1 bg-gradient-to-r from-accent to-primary rounded-full"></div>
+      </div>
+    </motion.div>
 
         {/* Perfiles */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
@@ -104,12 +121,13 @@ export default function Part2({ markVisited }) {
         </motion.div>
 
         {/* Terminología */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-2xl font-display font-bold mb-4">Terminología Clave</h3>
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  className="mb-10"
+>
+          <h3 className="text-2xl font-display font-bold mb-6 text-center">Terminología Clave</h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {taxonomy.map((t, i) => (
               <div key={i} className="glass-card p-4 flex items-start gap-3">
@@ -119,6 +137,37 @@ export default function Part2({ markVisited }) {
             ))}
           </div>
         </motion.div>
+
+{/* Ejemplo práctico */}
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  className="mb-6"
+>
+  <h3 className="text-2xl font-display font-bold mb-6 text-center">Ejemplo de Aplicación</h3>
+  <div className="glass-card p-6 max-w-4xl mx-auto shadow-lg border border-primary/20 rounded-xl space-y-4">
+    <p className="text-text-muted leading-relaxed text-lg">
+      Imagina una empresa de software con <strong className="text-primary">10 integrantes</strong> que desarrolla 
+      una aplicación móvil. Al aplicar la ISO 29110:
+    </p>
+    <ul className="space-y-2 text-sm text-text-muted">
+      <li>✅ Se documentan roles y responsabilidades (PM, desarrolladores, testers).</li>
+      <li>✅ Se definen entregables claros: prototipo, versión beta, versión final.</li>
+      <li>✅ Se implementa un proceso de control de calidad en cada sprint.</li>
+      <li>✅ Se realizan retrospectivas para mejorar continuamente.</li>
+    </ul>
+    {/* Cierre elegante */}
+    <div className="glass-card p-4 border-l-4 border-accent text-center">
+      <p className="text-base text-text-muted italic">
+        Más allá de cumplir con un proyecto puntual, este enfoque siembra una cultura de 
+        calidad y aprendizaje que acompaña a la organización en cada nuevo desafío.
+      </p>
+    </div>
+  </div>
+</motion.div>
+
+
       </div>
     </section>
   );
