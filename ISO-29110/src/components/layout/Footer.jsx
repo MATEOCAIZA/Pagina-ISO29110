@@ -11,9 +11,7 @@ export default function Footer() {
           <span className="gradient-text font-semibold">ISO/IEC 29110</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <span>Hecho con</span>
-          <Heart size={13} className="text-danger fill-danger" />
-          <span>para pequeñas empresas de software</span>
+          <span>ISO 29110-Guía</span>
         </div>
         <div className="text-xs opacity-60">
           Basado en la norma ISO/IEC 29110 — VSE
