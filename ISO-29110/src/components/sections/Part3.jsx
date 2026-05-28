@@ -6,6 +6,8 @@ import {
   Circle,
   BarChart3,
   RotateCcw,
+  FileText,
+  Download,
 } from 'lucide-react';
 
 function getLevel(score) {
@@ -147,9 +149,41 @@ export default function Part3({
         viewport={{ once: true }}
         className="mb-12"
       >
+
+      
+
         <span className="badge-accent mb-4">
           📊 ISO 29110 — Parte 3
         </span>
+
+         {/* Download banner */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="glass-card p-5 mb-10 border border-primary/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+        style={{ background: 'hsla(221,83%,53%,0.06)' }}
+      >
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+            style={{ background: 'hsla(221,83%,53%,0.15)' }}>
+            <FileText size={22} className="text-primary" />
+          </div>
+          <div>
+            <h4 className="font-semibold text-text-primary">ISO/IEC 29110-3 — Documento Oficial</h4>
+            <p className="text-text-muted text-sm">Guías para la evaluación de procesos.</p>
+          </div>
+        </div>
+        <a
+          href="/ISO-29110-3.pdf"
+          download
+          className="flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all hover:scale-105 flex-shrink-0"
+          style={{ background: 'hsl(221,83%,53%)', color: 'white' }}
+        >
+          <Download size={16} />
+          Descargar PDF
+        </a>
+      </motion.div>
 
         <h2 className="section-title mb-3">
           Guía de Evaluación

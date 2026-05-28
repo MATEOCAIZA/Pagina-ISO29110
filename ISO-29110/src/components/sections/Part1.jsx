@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { CheckCircle, XCircle, Building2, Users, Target, Clock } from 'lucide-react';
+import { CheckCircle, XCircle, Building2, Users, Target, Clock, FileText, Download } from 'lucide-react';
 import { useEffect } from 'react';
 
 const withIso = [
@@ -92,6 +92,35 @@ export default function Part1({ markVisited }) {
           a la realidad de las empresas que no cuentan con grandes estructuras, pero que necesitan
           procesos confiables y resultados de calidad.
         </p>
+      </motion.div>
+
+      {/* Download banner */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="glass-card p-5 mb-10 border border-primary/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+        style={{ background: 'hsla(221,83%,53%,0.06)' }}
+      >
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+            style={{ background: 'hsla(221,83%,53%,0.15)' }}>
+            <FileText size={22} className="text-primary" />
+          </div>
+          <div>
+            <h4 className="font-semibold text-text-primary">ISO/IEC 29110-1 — Documento Oficial</h4>
+            <p className="text-text-muted text-sm">Perfiles y ciclos de vida para VSEs. Visión General</p>
+          </div>
+        </div>
+        <a
+          href="/ISO-29110-1.pdf"
+          download
+          className="flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all hover:scale-105 flex-shrink-0"
+          style={{ background: 'hsl(221,83%,53%)', color: 'white' }}
+        >
+          <Download size={16} />
+          Descargar PDF
+        </a>
       </motion.div>
 
       {/* Comparación Con vs Sin ISO */}
