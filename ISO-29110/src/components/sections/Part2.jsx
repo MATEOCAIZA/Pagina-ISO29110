@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { profiles } from '../../data/iso29110Data';
 import { ArrowRight, FileText, Download } from 'lucide-react';
 
@@ -19,8 +19,7 @@ const taxonomy = [
   { term: 'SI', def: 'Software Implementation — implementación de software.' },
 ];
 
-export default function Part2({ markVisited }) {
-  useEffect(() => { markVisited('part2'); }, [markVisited]);
+export default function Part2() {
   const [selectedProfile, setSelectedProfile] = useState(null);
 
   return (

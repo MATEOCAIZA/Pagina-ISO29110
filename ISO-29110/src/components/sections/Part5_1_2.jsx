@@ -11,11 +11,11 @@ const tabStyle = (active) =>
       : 'text-text-muted hover:text-text-primary hover:bg-surface-3'
   }`;
 
-export default function Part5_1_2({ markVisited }) {
-  useEffect(() => { markVisited('part5_2'); }, []);
+export default function Part5_1_2({ onAllCompleted }) {
   const [activeTab, setActiveTab] = useState('pm');
   const [completedActivities, setCompletedActivities] = useState([]);
   const [selectedTemplate, setSelectedTemplate] = useState(null);
+  const [notified, setNotified] = useState(false);
 
   const toggleActivity = (id) => {
     setCompletedActivities((prev) =>
@@ -36,6 +36,14 @@ export default function Part5_1_2({ markVisited }) {
     : 0;
   
   const totalProgress = Math.round((completedActivities.length / totalActivities) * 100);
+
+  // Notificar al padre cuando se completan todas las actividades
+  useEffect(() => {
+    if (totalProgress === 100 && !notified) {
+      setNotified(true);
+      onAllCompleted?.();
+    }
+  }, [totalProgress, notified, onAllCompleted]);
 
   const pmTemplates = artifactTemplates.filter((t) => t.category === 'PM');
   const siTemplates = artifactTemplates.filter((t) => t.category === 'SI');

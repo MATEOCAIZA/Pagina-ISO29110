@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
-import { CheckCircle, XCircle, Building2, Users, Target, Clock, FileText, Download } from 'lucide-react';
-import { useEffect } from 'react';
+import { CheckCircle, XCircle, Building2, Users, Target, FileText, Download } from 'lucide-react';
 
 const withIso = [
   'Procesos claros y documentados',
@@ -34,9 +33,7 @@ const timeline = [
   { step: 'Mejora Continua', desc: 'Evaluar y optimizar tras cada proyecto.' },
 ];
 
-export default function Part1({ markVisited }) {
-  useEffect(() => { markVisited('part1'); }, [markVisited]);
-
+export default function Part1() {
   return (
     <section id="part1" className="py-20 max-w-7xl mx-auto px-4">
       {/* Encabezado */}

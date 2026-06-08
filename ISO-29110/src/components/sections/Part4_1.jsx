@@ -265,12 +265,8 @@ function ProfileInfo({ current }) {
 
 // ── Main component ─────────────────────────────────────────────────────────────
 
-export default function Part4({ markVisited }) {
+export default function Part4() {
   const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    markVisited('part4');
-  }, []);
 
   return (
     <section id="part4" className="py-20 bg-surface-2/30">

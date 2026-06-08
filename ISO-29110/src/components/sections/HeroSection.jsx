@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Zap, Users, Shield, TrendingUp, ChevronDown } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const stats = [
   { value: '95%', label: 'de empresas de software son VSEs', icon: Users },
@@ -13,7 +14,9 @@ const floatingOrbs = [
   { size: 150, x: '60%', y: '10%', color: 'hsl(172,66%,50%)', delay: 2 },
 ];
 
-export default function HeroSection({ onStart }) {
+export default function HeroSection() {
+  const navigate = useNavigate();
+
   return (
     <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-16">
       {/* Background orbs */}
@@ -22,10 +25,7 @@ export default function HeroSection({ onStart }) {
           key={i}
           className="absolute rounded-full pointer-events-none"
           style={{
-            width: orb.size,
-            height: orb.size,
-            left: orb.x,
-            top: orb.y,
+            width: orb.size, height: orb.size, left: orb.x, top: orb.y,
             background: `radial-gradient(circle, ${orb.color}18 0%, transparent 70%)`,
           }}
           animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
@@ -44,12 +44,7 @@ export default function HeroSection({ onStart }) {
 
       <div className="relative max-w-5xl mx-auto px-4 text-center">
         {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 mb-6"
-        >
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="inline-flex items-center gap-2 mb-6">
           <span className="badge-primary text-sm px-4 py-1.5">
             <Zap size={12} /> Norma Internacional ISO/IEC 29110
           </span>
@@ -57,22 +52,17 @@ export default function HeroSection({ onStart }) {
 
         {/* Headline */}
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
           className="text-5xl md:text-7xl font-display font-bold leading-tight mb-6"
         >
           Implementa{' '}
           <span className="gradient-text">ISO 29110</span>
-          <br />
-          en tu empresa de software
+          <br />en tu empresa de software
         </motion.h1>
 
         {/* Subtitle */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
           className="text-xl text-text-muted max-w-2xl mx-auto mb-10 text-balance"
         >
           Guía interactiva y visual diseñada para <strong className="text-text-primary">pequeñas empresas de software</strong> (hasta 25 personas). Sin tecnicismos, paso a paso.
@@ -80,27 +70,20 @@ export default function HeroSection({ onStart }) {
 
         {/* CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
         >
-          <button onClick={onStart} className="btn-primary text-base px-8 py-4">
+          <button onClick={() => navigate('/parte/1')} className="btn-primary text-base px-8 py-4">
             Comenzar Guía <ArrowRight size={18} />
           </button>
-          <button
-            onClick={() => document.getElementById('part3')?.scrollIntoView({ behavior: 'smooth' })}
-            className="btn-secondary text-base px-8 py-4"
-          >
-            Autoevalúate ahora
+          <button onClick={() => navigate('/cuestionario-final')} className="btn-secondary text-base px-8 py-4">
+            Ir al Cuestionario Final
           </button>
         </motion.div>
 
         {/* Stats */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
+          initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }}
           className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto"
         >
           {stats.map((stat, i) => (
@@ -116,8 +99,7 @@ export default function HeroSection({ onStart }) {
       {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-8 flex flex-col items-center gap-2 text-text-muted text-sm"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
+        animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }}
       >
         <span>Explora las secciones</span>
         <ChevronDown size={18} />

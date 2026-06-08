@@ -135,12 +135,12 @@ const differences511vs512 = [
   { aspect: 'Documentación', entry: 'Ligera', basic: 'Completa y trazable' },
 ];
 
-export default function Part5_1_1({ markVisited }) {
-  useEffect(() => { markVisited('part5_1'); }, []);
+export default function Part5_1_1({ onAllCompleted }) {
   const [completedPM, setCompletedPM] = useState([]);
   const [completedSI, setCompletedSI] = useState([]);
   const [expandedPM, setExpandedPM] = useState(null);
   const [expandedSI, setExpandedSI] = useState(null);
+  const [notified, setNotified] = useState(false);
 
   const toggle = (list, setList, id) =>
     setList((prev) => prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]);
@@ -221,6 +221,13 @@ export default function Part5_1_1({ markVisited }) {
   const siProgress = Math.round((completedSI.length / entrySI.length) * 100);
   const totalProgress = Math.round(((completedPM.length + completedSI.length) / (entryPM.length + entrySI.length)) * 100);
 
+  // Notificar al padre cuando se completan todas las actividades
+  useEffect(() => {
+    if (totalProgress === 100 && !notified) {
+      setNotified(true);
+      onAllCompleted?.();
+    }
+  }, [totalProgress, notified, onAllCompleted]);
   return (
     <section id="part5_1" className="py-20 max-w-7xl mx-auto px-4">
 

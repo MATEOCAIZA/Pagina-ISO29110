@@ -52,13 +52,9 @@ const circleRadius = 40;
 const circumference = 2 * Math.PI * circleRadius;
 
 export default function Part3({
-  markVisited,
   setQuizResults,
   quizResults,
 }) {
-  useEffect(() => {
-    markVisited('part3');
-  }, [markVisited]);
 
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);

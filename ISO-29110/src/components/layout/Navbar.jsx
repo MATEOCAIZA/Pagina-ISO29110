@@ -1,17 +1,28 @@
 import { motion } from 'framer-motion';
-import { BookOpen, Menu, X, RotateCcw, CheckCircle } from 'lucide-react';
+import { BookOpen, Menu, X, RotateCcw, CheckCircle, Lock } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { isoSections } from '../../data/iso29110Data';
 
-const colorMap = {
-  primary: 'text-primary',
-  secondary: 'text-secondary',
-  accent: 'text-accent',
-  warning: 'text-warning',
+const ROUTE_MAP = {
+  part1: '/parte/1',
+  part2: '/parte/2',
+  part3: '/parte/3',
+  part4: '/parte/4',
+  part5_1: '/parte/5-1',
+  part5_2: '/parte/5-2',
 };
 
-export default function Navbar({ progressPercent, isVisited, onReset, activeSection, onNavigate }) {
+export default function Navbar({ progressPercent, isVisited, isUnlocked, onReset }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  const handleNav = (sectionId) => {
+    if (!isUnlocked(sectionId)) return;
+    navigate(ROUTE_MAP[sectionId]);
+    setMenuOpen(false);
+  };
 
   return (
     <motion.nav
@@ -23,7 +34,7 @@ export default function Navbar({ progressPercent, isVisited, onReset, activeSect
     >
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-2.5">
+        <button onClick={() => navigate('/')} className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg, hsl(217,91%,60%), hsl(262,83%,65%))' }}>
             <BookOpen size={16} className="text-white" />
           </div>
@@ -31,22 +42,38 @@ export default function Navbar({ progressPercent, isVisited, onReset, activeSect
             <span className="gradient-text">ISO 29110</span>
             <span className="text-text-muted text-sm font-normal ml-1">Guía</span>
           </span>
-        </div>
+        </button>
 
         {/* Desktop nav */}
         <div className="hidden lg:flex items-center gap-1">
-          {isoSections.map((s) => (
-            <button
-              key={s.id}
-              onClick={() => onNavigate(s.id)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 flex items-center gap-1.5 ${
-                activeSection === s.id ? 'bg-surface-3 text-text-primary' : 'text-text-muted hover:text-text-primary hover:bg-surface-2'
-              }`}
-            >
-              {isVisited(s.id) && <CheckCircle size={10} className="text-accent" />}
-              {s.shortTitle}
-            </button>
-          ))}
+          {isoSections.map((s) => {
+            const unlocked = isUnlocked(s.id);
+            const visited  = isVisited(s.id);
+            const active   = pathname === ROUTE_MAP[s.id];
+
+            return (
+              <button
+                key={s.id}
+                onClick={() => handleNav(s.id)}
+                disabled={!unlocked}
+                title={!unlocked ? 'Completa la sección anterior para desbloquear' : s.title}
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 flex items-center gap-1.5 ${
+                  !unlocked
+                    ? 'text-text-muted/40 cursor-not-allowed'
+                    : active
+                      ? 'bg-surface-3 text-text-primary'
+                      : 'text-text-muted hover:text-text-primary hover:bg-surface-2'
+                }`}
+              >
+                {visited
+                  ? <CheckCircle size={10} className="text-accent" />
+                  : !unlocked
+                    ? <Lock size={10} className="text-text-muted/40" />
+                    : null}
+                {s.shortTitle}
+              </button>
+            );
+          })}
         </div>
 
         {/* Progress + actions */}
@@ -73,7 +100,7 @@ export default function Navbar({ progressPercent, isVisited, onReset, activeSect
             <RotateCcw size={15} />
           </button>
 
-          {/* Mobile menu toggle */}
+          {/* Mobile toggle */}
           <button
             className="lg:hidden p-2 rounded-lg text-text-muted hover:bg-surface-2"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -102,19 +129,34 @@ export default function Navbar({ progressPercent, isVisited, onReset, activeSect
           style={{ background: 'rgba(15,18,28,0.97)' }}
         >
           <div className="p-3 grid grid-cols-2 gap-1">
-            {isoSections.map((s) => (
-              <button
-                key={s.id}
-                onClick={() => { onNavigate(s.id); setMenuOpen(false); }}
-                className={`px-3 py-2 rounded-lg text-sm text-left flex items-center gap-2 transition-all ${
-                  activeSection === s.id ? 'bg-surface-3 text-text-primary' : 'text-text-muted hover:bg-surface-2'
-                }`}
-              >
-                <span>{s.emoji}</span>
-                {isVisited(s.id) && <CheckCircle size={10} className="text-accent" />}
-                {s.shortTitle}
-              </button>
-            ))}
+            {isoSections.map((s) => {
+              const unlocked = isUnlocked(s.id);
+              const visited  = isVisited(s.id);
+              const active   = pathname === ROUTE_MAP[s.id];
+
+              return (
+                <button
+                  key={s.id}
+                  onClick={() => handleNav(s.id)}
+                  disabled={!unlocked}
+                  className={`px-3 py-2 rounded-lg text-sm text-left flex items-center gap-2 transition-all ${
+                    !unlocked
+                      ? 'text-text-muted/40 cursor-not-allowed'
+                      : active
+                        ? 'bg-surface-3 text-text-primary'
+                        : 'text-text-muted hover:bg-surface-2'
+                  }`}
+                >
+                  <span>{s.emoji}</span>
+                  {visited
+                    ? <CheckCircle size={10} className="text-accent" />
+                    : !unlocked
+                      ? <Lock size={10} className="text-text-muted/40" />
+                      : null}
+                  {s.shortTitle}
+                </button>
+              );
+            })}
           </div>
         </motion.div>
       )}
