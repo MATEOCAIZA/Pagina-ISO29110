@@ -34,7 +34,7 @@ export default function Part2() {
       className="mb-16 text-center relative"
     >
       {/* Badge superior */}
-      <span className="badge-secondary mb-4 inline-block px-4 py-1 rounded-full shadow-sm">
+      <span className="badge-secondary mb-4 inline-block px-6 py-2 rounded-full shadow-sm text-lg font-semibold">
         🗂️ ISO 29110 — Parte 2
       </span>
 

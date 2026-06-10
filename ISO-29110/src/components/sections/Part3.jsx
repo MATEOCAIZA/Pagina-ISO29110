@@ -148,7 +148,7 @@ export default function Part3({
 
 
 
-        <span className="badge-accent mb-4">
+        <span className="badge-accent mb-4 inline-block px-6 py-2 rounded-full shadow-sm text-lg font-semibold">
           📊 ISO 29110 — Parte 3
         </span>
 

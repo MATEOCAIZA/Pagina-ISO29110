@@ -280,7 +280,7 @@ export default function Part4() {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <span className="badge-warning mb-4">📋 ISO 29110 — Parte 4-1</span>
+          <span className="badge-warning mb-4 inline-block px-6 py-2 rounded-full shadow-sm text-lg font-semibold">📋 ISO 29110 — Parte 4-1</span>
           <h2 className="section-title mb-3">Especificaciones de Perfil</h2>
           <p className="section-subtitle max-w-3xl">
             La Parte 4-1 define diferentes perfiles para el ciclo de vida del desarrollo de

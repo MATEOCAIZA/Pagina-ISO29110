@@ -53,7 +53,7 @@ export default function Part5_1_2({ onAllCompleted }) {
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
-          <span className="badge-secondary mb-4">⭐ ISO 29110 — Parte 5-1-2</span>
+          <span className="badge-secondary mb-4 inline-block px-6 py-2 rounded-full shadow-sm text-lg font-semibold">⭐ ISO 29110 — Parte 5-1-2</span>
           <h2 className="section-title mb-3">Perfil Básico</h2>
           <p className="section-subtitle max-w-3xl">
             El perfil más importante para VSEs de <strong className="text-text-primary">6 a 25 personas</strong>.

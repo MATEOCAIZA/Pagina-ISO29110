@@ -233,7 +233,7 @@ export default function Part5_1_1({ onAllCompleted }) {
 
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
-        <span className="badge-primary mb-4">🚀 ISO 29110 — Parte 5-1-1</span>
+        <span className="badge-primary mb-4 inline-block px-6 py-2 rounded-full shadow-sm text-lg font-semibold">🚀 ISO 29110 — Parte 5-1-1</span>
         <h2 className="section-title mb-3">Perfil de Entrada</h2>
         <p className="section-subtitle max-w-3xl">
           Guía de gestión e ingeniería para equipos de <strong className="text-text-primary">1 a 6 personas</strong> con un solo
