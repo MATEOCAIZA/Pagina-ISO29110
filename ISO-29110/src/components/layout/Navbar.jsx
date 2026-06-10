@@ -3,6 +3,7 @@ import { BookOpen, Menu, X, RotateCcw, CheckCircle, Lock } from 'lucide-react';
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { isoSections } from '../../data/iso29110Data';
+import ThemeToggle from '../ui/ThemeToggle';
 
 const ROUTE_MAP = {
   part1: '/parte/1',
@@ -13,7 +14,7 @@ const ROUTE_MAP = {
   part5_2: '/parte/5-2',
 };
 
-export default function Navbar({ progressPercent, isVisited, isUnlocked, onReset }) {
+export default function Navbar({ progressPercent, isVisited, isUnlocked, onReset, theme, toggleTheme }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -30,7 +31,7 @@ export default function Navbar({ progressPercent, isVisited, isUnlocked, onReset
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
       className="fixed top-0 left-0 right-0 z-50"
-      style={{ background: 'rgba(15,18,28,0.85)', backdropFilter: 'blur(16px)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}
+      style={{ background: 'var(--navbar-bg)', backdropFilter: 'blur(16px)', borderBottom: '1px solid var(--navbar-border)' }}
     >
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
@@ -92,6 +93,8 @@ export default function Navbar({ progressPercent, isVisited, isUnlocked, onReset
             <span className="text-xs text-text-muted font-medium">{progressPercent}%</span>
           </div>
 
+          <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+
           <button
             onClick={onReset}
             title="Reiniciar progreso"
@@ -126,7 +129,7 @@ export default function Navbar({ progressPercent, isVisited, isUnlocked, onReset
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           className="lg:hidden border-t border-border-subtle"
-          style={{ background: 'rgba(15,18,28,0.97)' }}
+          style={{ background: 'var(--mobile-menu-bg)' }}
         >
           <div className="p-3 grid grid-cols-2 gap-1">
             {isoSections.map((s) => {

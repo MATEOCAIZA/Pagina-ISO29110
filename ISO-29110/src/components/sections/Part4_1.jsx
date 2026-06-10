@@ -102,10 +102,10 @@ const PROFILES = [
 ];
 
 const RING_COLORS = [
-  'hsla(172,66%,44%,0.82)',
-  'hsla(217,91%,55%,0.80)',
-  'hsla(262,83%,58%,0.78)',
-  'hsla(38,92%,50%,0.82)',
+  'var(--color-accent)',
+  'var(--color-primary)',
+  'var(--color-secondary)',
+  'var(--color-warning)',
 ];
 const RING_RADII = [84, 66, 48, 30];
 const RING_LABELS = ['Avanzado', 'Intermedio', 'Básico', 'Entrada'];
@@ -159,8 +159,9 @@ function VennDiagram({ current }) {
             cy={cy}
             r={r}
             fill={isActive ? RING_COLORS[3 - i] : 'transparent'}
-            stroke={isActive ? RING_COLORS[3 - i] : 'rgba(255,255,255,0.12)'}
-            strokeWidth={isActive ? 1.5 : 0.7}
+            fillOpacity={isActive ? 0.8 : 1}
+            stroke={isActive ? RING_COLORS[3 - i] : 'var(--color-border-subtle)'}
+            strokeWidth={isActive ? 1.5 : 1}
           />
         );
       })}
@@ -181,8 +182,8 @@ function VennDiagram({ current }) {
             textAnchor="middle"
             dominantBaseline="central"
             fontSize={i === 0 ? 9 : 10}
-            fontWeight={isActive ? 500 : 400}
-            fill={isActive ? '#fff' : 'rgba(255,255,255,0.35)'}
+            fontWeight={isActive ? 600 : 400}
+            fill={isActive ? 'var(--tab-active-text)' : 'var(--color-text-muted)'}
             fontFamily="inherit"
           >
             {RING_LABELS[i]}

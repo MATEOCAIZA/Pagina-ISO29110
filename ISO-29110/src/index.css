@@ -2,6 +2,152 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─────────────────────────────────────────────────────────────────────────
+   LIGHT THEME (default)
+───────────────────────────────────────────────────────────────────────── */
+:root,
+[data-theme="light"] {
+  /* Brand */
+  --color-primary:         hsl(217, 91%, 48%);
+  --color-primary-dark:    hsl(217, 91%, 35%);
+  --color-primary-light:   hsl(217, 91%, 65%);
+  --color-secondary:       hsl(262, 83%, 55%);
+  --color-secondary-dark:  hsl(262, 83%, 40%);
+  --color-secondary-light: hsl(262, 83%, 72%);
+  --color-accent:          hsl(172, 66%, 36%);
+  --color-accent-dark:     hsl(172, 66%, 24%);
+  --color-accent-light:    hsl(172, 66%, 52%);
+  --color-warning:         hsl(38, 92%, 42%);
+  --color-warning-dark:    hsl(38, 92%, 30%);
+  --color-warning-light:   hsl(38, 92%, 60%);
+  --color-danger:          hsl(0, 84%, 55%);
+  --color-danger-dark:     hsl(0, 84%, 40%);
+
+  /* Surfaces */
+  --color-surface:         hsl(210, 30%, 98%);
+  --color-surface-2:       hsl(213, 25%, 93%);
+  --color-surface-3:       hsl(215, 20%, 86%);
+  --color-surface-4:       hsl(218, 18%, 78%);
+
+  /* Text */
+  --color-text-primary:    hsl(220, 25%, 12%);
+  --color-text-muted:      hsl(218, 15%, 42%);
+  --color-text-secondary:  hsl(218, 12%, 55%);
+
+  /* Borders */
+  --color-border-subtle:   hsl(218, 18%, 80%);
+  --color-border-tertiary: hsl(218, 14%, 72%);
+
+  /* Glass overlay */
+  --glass-bg:              rgba(255, 255, 255, 0.72);
+  --glass-border:          rgba(0, 0, 0, 0.07);
+  --glass-shadow:          0 4px 24px rgba(0, 0, 0, 0.08);
+  --glass-bg-hover:        rgba(255, 255, 255, 0.88);
+  --glass-border-hover:    rgba(0, 0, 0, 0.11);
+  --glass-shadow-hover:    0 8px 40px rgba(0, 0, 0, 0.14);
+
+  /* Scrollbar */
+  --scrollbar-track:       hsl(213, 25%, 90%);
+  --scrollbar-thumb:       hsl(217, 91%, 58%);
+  --scrollbar-thumb-hover: hsl(217, 91%, 44%);
+
+  /* Navbar */
+  --navbar-bg:             rgba(248, 251, 255, 0.88);
+  --navbar-border:         rgba(0, 0, 0, 0.07);
+  --mobile-menu-bg:        rgba(246, 249, 255, 0.97);
+
+  /* Gradients */
+  --gradient-hero: linear-gradient(135deg,
+    hsl(210, 30%, 98%) 0%,
+    hsl(225, 28%, 95%) 50%,
+    hsl(240, 26%, 96%) 100%);
+  --gradient-primary: linear-gradient(135deg, hsl(217,91%,48%), hsl(262,83%,55%));
+  --gradient-accent:  linear-gradient(135deg, hsl(172,66%,36%), hsl(217,91%,48%));
+
+  /* Tab btn active text */
+  --tab-active-text: hsl(220, 25%, 12%);
+
+  /* btn-secondary */
+  --btn-secondary-bg:           rgba(0, 0, 0, 0.05);
+  --btn-secondary-border:       rgba(0, 0, 0, 0.12);
+  --btn-secondary-color:        hsl(220, 25%, 12%);
+  --btn-secondary-bg-hover:     rgba(0, 0, 0, 0.09);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   DARK THEME
+───────────────────────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  /* Brand */
+  --color-primary:         hsl(217, 91%, 60%);
+  --color-primary-dark:    hsl(217, 91%, 45%);
+  --color-primary-light:   hsl(217, 91%, 75%);
+  --color-secondary:       hsl(262, 83%, 65%);
+  --color-secondary-dark:  hsl(262, 83%, 50%);
+  --color-secondary-light: hsl(262, 83%, 80%);
+  --color-accent:          hsl(172, 66%, 50%);
+  --color-accent-dark:     hsl(172, 66%, 35%);
+  --color-accent-light:    hsl(172, 66%, 65%);
+  --color-warning:         hsl(38, 92%, 55%);
+  --color-warning-dark:    hsl(38, 92%, 40%);
+  --color-warning-light:   hsl(38, 92%, 70%);
+  --color-danger:          hsl(0, 84%, 60%);
+  --color-danger-dark:     hsl(0, 84%, 45%);
+
+  /* Surfaces */
+  --color-surface:         hsl(220, 20%, 10%);
+  --color-surface-2:       hsl(220, 18%, 14%);
+  --color-surface-3:       hsl(220, 16%, 18%);
+  --color-surface-4:       hsl(220, 14%, 22%);
+
+  /* Text */
+  --color-text-primary:    hsl(210, 40%, 96%);
+  --color-text-muted:      hsl(215, 20%, 65%);
+  --color-text-secondary:  hsl(215, 16%, 52%);
+
+  /* Borders */
+  --color-border-subtle:   hsl(220, 15%, 22%);
+  --color-border-tertiary: hsl(220, 13%, 28%);
+
+  /* Glass overlay */
+  --glass-bg:              rgba(255, 255, 255, 0.04);
+  --glass-border:          rgba(255, 255, 255, 0.08);
+  --glass-shadow:          0 4px 24px rgba(0, 0, 0, 0.4);
+  --glass-bg-hover:        rgba(255, 255, 255, 0.07);
+  --glass-border-hover:    rgba(255, 255, 255, 0.12);
+  --glass-shadow-hover:    0 8px 40px rgba(0, 0, 0, 0.6);
+
+  /* Scrollbar */
+  --scrollbar-track:       hsl(220, 20%, 10%);
+  --scrollbar-thumb:       hsl(217, 91%, 45%);
+  --scrollbar-thumb-hover: hsl(217, 91%, 60%);
+
+  /* Navbar */
+  --navbar-bg:             rgba(15, 18, 28, 0.85);
+  --navbar-border:         rgba(255, 255, 255, 0.07);
+  --mobile-menu-bg:        rgba(15, 18, 28, 0.97);
+
+  /* Gradients */
+  --gradient-hero: linear-gradient(135deg,
+    hsl(220, 20%, 10%) 0%,
+    hsl(240, 20%, 14%) 50%,
+    hsl(262, 20%, 12%) 100%);
+  --gradient-primary: linear-gradient(135deg, hsl(217,91%,60%), hsl(262,83%,65%));
+  --gradient-accent:  linear-gradient(135deg, hsl(172,66%,50%), hsl(217,91%,60%));
+
+  /* Tab btn active text */
+  --tab-active-text: #fff;
+
+  /* btn-secondary */
+  --btn-secondary-bg:       rgba(255, 255, 255, 0.06);
+  --btn-secondary-border:   rgba(255, 255, 255, 0.12);
+  --btn-secondary-color:    hsl(210, 40%, 96%);
+  --btn-secondary-bg-hover: rgba(255, 255, 255, 0.10);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   BASE STYLES
+───────────────────────────────────────────────────────────────────────── */
 @layer base {
   * {
     @apply border-border-subtle;
@@ -19,6 +165,7 @@
     @apply bg-surface text-text-primary font-sans antialiased;
     min-height: 100vh;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -31,34 +178,38 @@
     height: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: hsl(220, 20%, 10%);
+    background: var(--scrollbar-track);
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(217, 91%, 45%);
+    background: var(--scrollbar-thumb);
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(217, 91%, 60%);
+    background: var(--scrollbar-thumb-hover);
   }
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+   COMPONENT STYLES
+───────────────────────────────────────────────────────────────────────── */
 @layer components {
   .glass-card {
     @apply bg-surface-2 border border-border-subtle rounded-2xl backdrop-blur-sm;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   }
 
   .glass-card:hover {
-    background: rgba(255,255,255,0.07);
-    border-color: rgba(255,255,255,0.12);
-    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--glass-shadow-hover);
   }
 
   .btn-primary {
     @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white transition-all duration-200;
-    background: linear-gradient(135deg, hsl(217, 91%, 60%), hsl(262, 83%, 65%));
+    background: var(--gradient-primary);
     box-shadow: 0 0 20px hsla(217, 91%, 60%, 0.3);
   }
   .btn-primary:hover {
@@ -71,12 +222,12 @@
 
   .btn-secondary {
     @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200 border;
-    background: rgba(255,255,255,0.06);
-    border-color: rgba(255,255,255,0.12);
-    color: hsl(210, 40%, 96%);
+    background: var(--btn-secondary-bg);
+    border-color: var(--btn-secondary-border);
+    color: var(--btn-secondary-color);
   }
   .btn-secondary:hover {
-    background: rgba(255,255,255,0.1);
+    background: var(--btn-secondary-bg-hover);
     transform: translateY(-1px);
   }
 
@@ -117,14 +268,14 @@
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, hsl(217, 91%, 70%), hsl(262, 83%, 75%));
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .gradient-text-accent {
-    background: linear-gradient(135deg, hsl(172, 66%, 60%), hsl(217, 91%, 70%));
+    background: var(--gradient-accent);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -151,7 +302,7 @@
     color: var(--color-text-secondary);
   }
   .tab-btn:hover { opacity: 0.85; }
-  .tab-btn.active { color: #fff; }
+  .tab-btn.active { color: var(--tab-active-text); }
   .tab-btn[data-i="0"] { border-color: hsl(172,66%,40%); }
   .tab-btn[data-i="1"] { border-color: hsl(217,91%,55%); }
   .tab-btn[data-i="2"] { border-color: hsl(262,83%,58%); }
@@ -176,7 +327,8 @@
   .iso-tag {
     display: flex; align-items: flex-start; gap: 8px; padding: 8px 10px;
     border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-tertiary);
-    background: var(--color-background-secondary); font-size: 12px; line-height: 1.45;
+    background: var(--color-surface-2); font-size: 12px; line-height: 1.45;
+    transition: background 0.3s ease;
   }
   .iso-tag .tag-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
   .iso-tag .tag-text { color: var(--color-text-primary); }
@@ -187,8 +339,9 @@
   .ring-animated { transform-origin: 50% 50%; animation: ring-in 0.32s cubic-bezier(0.34,1.56,0.64,1) both; }
 }
 
-
-
+/* ─────────────────────────────────────────────────────────────────────────
+   UTILITIES
+───────────────────────────────────────────────────────────────────────── */
 @layer utilities {
   .text-balance {
     text-wrap: balance;

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useProgress } from './hooks/useProgress';
+import { useTheme } from './hooks/useTheme';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import PageLayout from './components/layout/PageLayout';
@@ -28,6 +29,8 @@ export default function App() {
     resetProgress,
   } = useProgress();
 
+  const { theme, toggleTheme } = useTheme();
+
   // Estado de completado de actividades para Part5_1_1 y Part5_1_2
   const [p511Done, setP511Done] = useState(false);
   const [p512Done, setP512Done] = useState(false);
@@ -39,6 +42,8 @@ export default function App() {
         isVisited={isVisited}
         isUnlocked={isUnlocked}
         onReset={resetProgress}
+        theme={theme}
+        toggleTheme={toggleTheme}
       />
 
       <Routes>
